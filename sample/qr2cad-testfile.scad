@@ -1,5 +1,5 @@
 
-2d = true;
+2d = false;
 fudge = 0.01;
 block_z = 5;
 block_size = 2;
