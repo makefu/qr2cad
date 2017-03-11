@@ -38,7 +38,7 @@ def get_args():
 
 def get_image_data(data):
     qr = qrcode.QRCode(
-        version=None,
+        version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=10,
         border=4,
@@ -102,9 +102,10 @@ def make_scad(dxf, scadfilename):
     elif os.path.exists(mac):
         openscadexec = mac
     outfilename = 'qr2cad.%s' % ('dxf' if dxf else 'stl')
-    command = [openscadexec, '-m', 'make', '-x' if dxf else '-s', outfilename, scadfilename]
+    command = [openscadexec, '-m', 'make', '-o', outfilename, scadfilename]
+    print("Command: %s" % ( " ".join(command)))
     print('Exporting to %s' % ('DXF' if dxf else 'STL'))
-    subprocess.call(command)
+    subprocess.check_output(command)
     print('%s file is %s' % ('DXF' if dxf else 'STL', outfilename))
 
 def display_matrix_core(scale):

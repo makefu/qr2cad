@@ -1,4 +1,4 @@
 *~
 *.pyc
 env
-qr2cad.scad
+/qr2cad.scad
